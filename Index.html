@@ -7,156 +7,40 @@
   <title>ISKCON Ramgarh — Nityananda Trayodashi Invitation</title>
   <style>
     :root {
-      --bg: #fff5e6;
       --box-bg: #ffffff;
       --border: #ff9933;
       --text: #800000;
       --accent: #ff9933;
       --shadow: rgba(0, 0, 0, 0.08);
+      --bg: url('./Gaur nitai front close.jpeg') center/cover no-repeat;
     }
 
-    /* Base */
     html, body {
       margin: 0;
       padding: 0;
       background: var(--bg);
+      background-color: #FFDAB9; /* Fallback Peach */
       color: var(--text);
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
+      height: 100vh;
     }
 
     .container {
       max-width: 960px;
       margin: 0 auto;
       padding: 24px;
-    }
-
-    .card {
-      background: var(--box-bg);
-      border: 2px solid var(--border);
-      border-radius: 14px;
-      box-shadow: 0 8px 24px var(--shadow);
-      padding: 24px;
-    }
-
-    .title {
-      text-align: center;
-      font-weight: 700;
-      font-size: 1.8rem;
-      margin: 0 0 12px;
-    }
-
-    .header {
-      text-align: center;
-      font-size: 1.3rem;
-      margin: 0 0 8px;
-    }
-
-    .subheader {
-      text-align: center;
-      font-size: 1rem;
-      opacity: 0.9;
-      margin: 0 0 18px;
-    }
-
-    /* Countdown */
-    .countdown {
+      height: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin: 18px 0 24px;
-    }
-
-    .count-box {
-      background: #fff;
-      border: 2px solid var(--accent);
-      border-radius: 10px;
-      padding: 12px 16px;
-      min-width: 120px;
-      text-align: center;
-    }
-
-    .count-value {
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: var(--text);
-      line-height: 1.2;
-    }
-
-    .count-label {
-      font-size: 0.85rem;
-      color: var(--text);
-      opacity: 0.85;
-    }
-
-    /* Buttons */
-    .actions {
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-      margin-top: 8px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      cursor: pointer;
-      border: 2px solid var(--accent);
-      color: var(--text);
-      background: #fff;
-      padding: 12px 18px;
-      border-radius: 10px;
-      font-weight: 700;
-      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
-      box-shadow: 0 6px 16px var(--shadow);
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      background: #fffaf2;
-      box-shadow: 0 10px 24px var(--shadow);
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #4a1a00;
-      border-color: var(--accent);
-    }
-
-    .btn-primary:hover {
-      background: #ffad4d;
-    }
-
-    /* Toast */
-    .toast {
-      position: fixed;
-      left: 50%;
-      bottom: 24px;
-      transform: translateX(-50%) translateY(24px);
-      background: #ffffff;
-      border: 2px solid var(--accent);
-      color: var(--text);
-      padding: 12px 16px;
-      border-radius: 10px;
-      box-shadow: 0 10px 28px var(--shadow);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 220ms ease, transform 220ms ease;
-      z-index: 9999;
-      max-width: 90vw;
-      text-align: center;
-      font-weight: 600;
-    }
-
-    .toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
     }
 
     /* Page switching */
     .page {
       display: none;
-      animation: fadeIn 320ms ease both;
+      width: 100%;
+      animation: fadeIn 500ms ease both;
     }
 
     .page.active {
@@ -164,346 +48,218 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
+      from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Page 2 specifics */
-    .celebrate {
+    /* --- PAGE 0: ENVELOPE STYLE --- */
+    #page0 {
+        text-align: center;
+    }
+    
+    .envelope-wrapper {
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+    .envelope-wrapper:hover {
+        transform: scale(1.05);
+    }
+    .envelope-icon {
+        font-size: 100px;
+        display: block;
+        margin-bottom: 20px;
+        filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2));
+    }
+    .open-text {
+        background: var(--accent);
+        color: white;
+        padding: 10px 25px;
+        border-radius: 50px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* Floating background chitti for Page 0 */
+    .bg-chitti {
+        position: absolute;
+        font-size: 24px;
+        opacity: 0.5;
+        z-index: -1;
+        animation: floatChitti 10s linear infinite;
+    }
+    @keyframes floatChitti {
+        0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+        10% { opacity: 0.5; }
+        90% { opacity: 0.5; }
+        100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* --- COMMON CARD STYLE --- */
+    .card {
+      background: var(--box-bg);
+      border: 2px solid var(--border);
+      border-radius: 14px;
+      box-shadow: 0 8px 24px var(--shadow);
+      padding: 24px;
       position: relative;
-      overflow: hidden;
+      z-index: 10;
     }
 
-    .balloons {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-    }
+    .title { text-align: center; font-weight: 700; font-size: 1.8rem; margin: 0 0 12px; }
+    .header { text-align: center; font-size: 1.3rem; margin: 0 0 8px; }
+    .subheader { text-align: center; font-size: 1rem; opacity: 0.9; margin: 0 0 18px; }
 
+    /* Countdown */
+    .countdown { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin: 18px 0; }
+    .count-box { background: #fff; border: 2px solid var(--accent); border-radius: 10px; padding: 10px; min-width: 80px; text-align: center; }
+    .count-value { font-size: 1.5rem; font-weight: 800; }
+    .count-label { font-size: 0.75rem; }
+
+    /* Buttons */
+    .actions { display: flex; justify-content: center; gap: 14px; margin-top: 20px; flex-wrap: wrap; }
+    .btn { cursor: pointer; border: 2px solid var(--accent); background: #fff; padding: 12px 20px; border-radius: 10px; font-weight: 700; transition: 0.2s; }
+    .btn-primary { background: var(--accent); color: white; }
+
+    /* Page 2 balloons */
     .balloon {
-      position: absolute;
-      bottom: -80px;
-      width: 28px;
-      height: 36px;
-      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-      background: #ff6f61;
-      box-shadow: inset 0 -6px 0 rgba(0,0,0,0.08);
-      animation: floatUp 6.5s ease-in infinite;
+      position: absolute; bottom: -80px; width: 28px; height: 36px; border-radius: 50%;
+      background: #ff6f61; animation: floatUp 6s ease-in infinite;
     }
-
-    .balloon::after {
-      content: "";
-      position: absolute;
-      bottom: -16px;
-      left: 50%;
-      width: 2px;
-      height: 22px;
-      background: #b5651d;
-      transform: translateX(-50%);
-    }
-
-    .balloon:nth-child(2) { left: 15%; background: #ffd166; animation-duration: 7.2s; animation-delay: 0.2s; }
-    .balloon:nth-child(3) { left: 32%; background: #06d6a0; animation-duration: 6.8s; animation-delay: 0.6s; }
-    .balloon:nth-child(4) { left: 52%; background: #118ab2; animation-duration: 7.6s; animation-delay: 0.4s; }
-    .balloon:nth-child(5) { left: 72%; background: #ef476f; animation-duration: 6.9s; animation-delay: 0.8s; }
-    .balloon:nth-child(6) { left: 88%; background: #ffa600; animation-duration: 7.4s; animation-delay: 0.3s; }
-
     @keyframes floatUp {
-      0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
-      10%  { opacity: 1; }
-      50%  { transform: translateY(-40vh) translateX(10px) scale(1.02); }
-      100% { transform: translateY(-85vh) translateX(-10px) scale(1.04); opacity: 0; }
+      0% { transform: translateY(0); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-90vh); opacity: 0; }
     }
 
-    .page2-title {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      font-weight: 800;
-      font-size: 1.8rem;
-      margin: 0 0 16px;
-    }
-
-    .shlok-box {
-      position: relative;
-      z-index: 1;
-      background: var(--box-bg);
-      border: 2px solid var(--border);
-      border-radius: 14px;
-      padding: 18px;
-      box-shadow: 0 8px 24px var(--shadow);
-      margin-bottom: 16px;
-    }
-
-    .shlok {
-      font-family: Georgia, "Times New Roman", Times, serif;
-      font-size: 1.05rem;
-      line-height: 1.7;
-      white-space: pre-line;
-      text-align: center;
-      color: var(--text);
-      margin: 0;
-    }
-
-    .translation {
-      text-align: center;
-      font-style: italic;
-      margin-top: 10px;
-      color: var(--text);
-      opacity: 0.95;
-    }
-
-    .info-box {
-      position: relative;
-      z-index: 1;
-      background: var(--box-bg);
-      border: 2px solid var(--border);
-      border-radius: 14px;
-      padding: 16px;
-      box-shadow: 0 8px 24px var(--shadow);
-      margin-top: 16px;
-      text-align: center;
-    }
-
-    .heart {
-      display: inline-block;
-      font-size: 1.8rem;
-      margin-top: 12px;
-      animation: pulse 600ms ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%   { transform: scale(1); }
-      50%  { transform: scale(1.18); }
-      100% { transform: scale(1); }
-    }
-
-    /* Responsive */
-    @media (max-width: 640px) {
-      .title { font-size: 1.5rem; }
-      .header { font-size: 1.15rem; }
-      .count-box { min-width: 100px; padding: 10px 12px; }
-      .count-value { font-size: 1.5rem; }
-      .page2-title { font-size: 1.5rem; }
-      .heart { font-size: 1.6rem; }
-    }
+    .shlok { font-style: italic; text-align: center; line-height: 1.6; white-space: pre-line; }
+    .heart { font-size: 2rem; animation: pulse 0.6s infinite; display: inline-block; }
+    @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.2); } 100% { transform: scale(1); } }
   </style>
 </head>
 <body>
+
   <div class="container">
-    <!-- Page 1: Invitation -->
-    <section id="page1" class="page active">
+    
+    <section id="page0" class="page active">
+        <div class="envelope-wrapper" onclick="goToPage1()">
+            <span class="envelope-icon">✉️</span>
+            <div class="open-text">You have a message! <br> Open Invitation</div>
+        </div>
+        <div id="chittiContainer"></div>
+    </section>
+
+    <section id="page1" class="page">
       <div class="card">
         <h1 class="title">🪔 Special Invitation 🪔</h1>
         <h2 class="header">Are you excited for Nityananda Trayodashi?</h2>
-        <p class="subheader">📍 ISKCON Ramgarh  📅 31st Jan 2026</p>
+        <p class="subheader">📍 ISKCON Ramgarh | 📅 31st Jan 2026</p>
 
-        <div class="countdown" aria-live="polite">
-          <div class="count-box">
-            <div id="days" class="count-value">—</div>
-            <div class="count-label">Days</div>
-          </div>
-          <div class="count-box">
-            <div id="hours" class="count-value">—</div>
-            <div class="count-label">Hours</div>
-          </div>
-          <div class="count-box">
-            <div id="minutes" class="count-value">—</div>
-            <div class="count-label">Minutes</div>
-          </div>
-          <div class="count-box">
-            <div id="seconds" class="count-value">—</div>
-            <div class="count-label">Seconds</div>
-          </div>
+        <div class="countdown">
+          <div class="count-box"><div id="days" class="count-value">—</div><div class="count-label">Days</div></div>
+          <div class="count-box"><div id="hours" class="count-value">—</div><div class="count-label">Hrs</div></div>
+          <div class="count-box"><div id="mins" class="count-value">—</div><div class="count-label">Min</div></div>
+          <div class="count-box"><div id="secs" class="count-value">—</div><div class="count-label">Sec</div></div>
         </div>
 
         <div class="actions">
-          <button id="yesBtn" class="btn btn-primary" aria-label="Confirm attendance">
-            YES! I'll be there
-          </button>
-          <button id="noBtn" class="btn" aria-label="Decline invitation">
-            No
-          </button>
+          <button id="yesBtn" class="btn btn-primary" onclick="goToPage2()">YES! I'll be there</button>
+          <button id="noBtn" class="btn">No</button>
+        </div>
+
+        <div style="margin-top: 20px; text-align: center; font-size: 0.9rem;">
+            <p>Contact: 7050047726</p>
+            <p>UPI: 037134036840019@axisbank</p>
         </div>
       </div>
     </section>
 
-    <!-- Page 2: Shlok & Mercy -->
-    <section id="page2" class="page celebrate" aria-hidden="true">
-      <!-- Balloons layer -->
-      <div class="balloons" aria-hidden="true">
-        <div class="balloon"></div>
-        <div class="balloon"></div>
-        <div class="balloon"></div>
-        <div class="balloon"></div>
-        <div class="balloon"></div>
-        <div class="balloon"></div>
-      </div>
-
+    <section id="page2" class="page">
+      <div id="balloonsContainer"></div>
       <div class="card">
-        <h1 class="page2-title">Haribol! 🎉</h1>
-
-        <div class="shlok-box">
-          <p class="shlok">
-ajanu-lambita-bhujau kanakavadatau
-sankirtanaika-pitarau kamala-visalaksau
-visvambharau dvija-varau yuga-dharma-palau
-vande jagat-priya-karau karuna-avatarau
-          </p>
-          <p class="translation">
-            “I offer my obeisances unto the incarnations of mercy, who inaugurated the congregational chanting of the Holy Names.”
-          </p>
+        <h1 class="title">Haribol! 🎉</h1>
+        <p class="shlok">
+          ajanu-lambita-bhujau kanakavadatau
+          sankirtanaika-pitarau kamala-visalaksau
+          visvambharau dvija-varau yuga-dharma-palau
+          vande jagat-priya-karau karuna-avatarau
+        </p>
+        <p style="text-align: center; font-size: 0.9rem; opacity: 0.8;">
+          “I offer my obeisances unto the incarnations of mercy...”
+        </p>
+        <div style="text-align: center; margin: 20px 0;">
+            Lord Nityananda is most magnanimous! He distributed love of Godhead to everyone! We look forward to seeing you at ‎ ‎ ‎ ‎ ‎ ISKCON Ramgarh.📍 <br>
+            <span id="heart" class="heart">❤️</span>
         </div>
-
-        <div class="info-box">
-          Lord Nityananda is the most magnanimous. He distributed love of Godhead to everyone! We look forward to seeing you at ISKCON Ramgarh.
-          <div id="heart" class="heart" aria-live="polite">❤️</div>
-        </div>
-
-        <div class="actions" style="margin-top: 18px;">
-          <button id="backBtn" class="btn" aria-label="Go back to invitation">Back</button>
+        <div class="actions">
+            <button class="btn" onclick="goToPage1()">Back</button>
         </div>
       </div>
     </section>
-  </div>
 
-  <!-- Toast -->
-  <div id="toast" class="toast" role="status" aria-live="polite">
-    Lord Nityananda is most merciful, don't miss out!
   </div>
 
   <script>
-    // Page elements
-    const page1 = document.getElementById('page1');
-    const page2 = document.getElementById('page2');
-    const yesBtn = document.getElementById('yesBtn');
-    const noBtn = document.getElementById('noBtn');
-    const backBtn = document.getElementById('backBtn');
-    const toast = document.getElementById('toast');
-
-    // Countdown to 31 Jan 2026 (local time)
-    const targetDate = new Date('2026-01-31T00:00:00');
-
-    const daysEl = document.getElementById('days');
-    const hoursEl = document.getElementById('hours');
-    const minutesEl = document.getElementById('minutes');
-    const secondsEl = document.getElementById('seconds');
-
-    function updateCountdown() {
-      const now = new Date();
-      const diff = targetDate - now;
-
-      if (diff <= 0) {
-        daysEl.textContent = '0';
-        hoursEl.textContent = '0';
-        minutesEl.textContent = '0';
-        secondsEl.textContent = '0';
-        return;
-      }
-
-      const seconds = Math.floor(diff / 1000);
-      const days = Math.floor(seconds / (3600 * 24));
-      const hours = Math.floor((seconds % (3600 * 24)) / 3600);
-      const minutes = Math.floor((seconds % 3600) / 60);
-      const secs = Math.floor(seconds % 60);
-
-      daysEl.textContent = String(days);
-      hoursEl.textContent = String(hours);
-      minutesEl.textContent = String(minutes);
-      secondsEl.textContent = String(secs);
-    }
-
-    updateCountdown();
-    const countdownInterval = setInterval(updateCountdown, 1000);
-
-    // No button cycling messages
-    const noMessages = [
-      'No',
-      'Are you sure?',
-      "Nitai's mercy is waiting!",
-      'Please reconsider!',
-      'Tap Yes! 🙏'
-    ];
-    let noIndex = 0;
-
-    function showToast() {
-      toast.classList.add('show');
-      setTimeout(() => {
-        toast.classList.remove('show');
-      }, 1800);
-    }
-
-    noBtn.addEventListener('click', () => {
-      noIndex = (noIndex + 1) % noMessages.length;
-      noBtn.textContent = noMessages[noIndex];
-      showToast();
-    });
-
-    // Navigation
-    function goToPage2() {
-      page1.classList.remove('active');
-      page1.setAttribute('aria-hidden', 'true');
-      page2.classList.add('active');
-      page2.setAttribute('aria-hidden', 'false');
-      // Trigger balloons by reflow (already animating via CSS)
-    }
-
+    // Navigation Functions
     function goToPage1() {
-      page2.classList.remove('active');
-      page2.setAttribute('aria-hidden', 'true');
-      page1.classList.add('active');
-      page1.setAttribute('aria-hidden', 'false');
+      document.getElementById('page0').classList.remove('active');
+      document.getElementById('page1').classList.add('active');
     }
 
-    yesBtn.addEventListener('click', goToPage2);
-    backBtn.addEventListener('click', goToPage1);
+    function goToPage2() {
+      document.getElementById('page1').classList.remove('active');
+      document.getElementById('page2').classList.add('active');
+      createBalloons();
+    }
 
-    // Heart animation: cycle emojis every 600ms
-    const heartEl = document.getElementById('heart');
-    const hearts = ['❤️', '💖', '💗'];
-    let heartIndex = 0;
-
+    // Countdown Logic
+    const targetDate = new Date('2026-01-31T00:00:00').getTime();
     setInterval(() => {
-      heartIndex = (heartIndex + 1) % hearts.length;
-      heartEl.textContent = hearts[heartIndex];
-    }, 600);
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+      if (diff < 0) return;
+      document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+      document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      document.getElementById('mins').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      document.getElementById('secs').innerText = Math.floor((diff % (1000 * 60)) / 1000);
+    }, 1000);
 
-    // Accessibility: stop countdown when page unloads
-    window.addEventListener('beforeunload', () => clearInterval(countdownInterval));
+    // No Button Fun
+    const noBtn = document.getElementById('noBtn');
+    const msgs = ['Are you sure?', 'Nitai is calling!', 'Please come! 🙏', 'Reconsider?', 'Click YES!'];
+    let idx = 0;
+    noBtn.onclick = () => { 
+        noBtn.innerText = msgs[idx]; 
+        idx = (idx + 1) % msgs.length; 
+    };
+
+    // Background Chitti Creator (Page 0)
+    function createChittis() {
+        const container = document.getElementById('chittiContainer');
+        for(let i=0; i<15; i++) {
+            let div = document.createElement('div');
+            div.className = 'bg-chitti';
+            div.innerText = '✉️';
+            div.style.left = Math.random() * 100 + 'vw';
+            div.style.animationDelay = Math.random() * 5 + 's';
+            container.appendChild(div);
+        }
+    }
+    createChittis();
+
+    // Balloon Creator (Page 2)
+    function createBalloons() {
+        const container = document.getElementById('balloonsContainer');
+        container.innerHTML = ''; 
+        for(let i=0; i<10; i++) {
+            let b = document.createElement('div');
+            b.className = 'balloon';
+            b.style.left = (i * 10) + '%';
+            b.style.backgroundColor = ['#ff6f61','#ffd166','#06d6a0','#118ab2','#ef476f'][i%5];
+            b.style.animationDelay = (Math.random() * 2) + 's';
+            container.appendChild(b);
+        }
+    }
   </script>
 </body>
 </html>
-```
-<!-- ... (rest of the code remains the same) -->
-
-<!-- Page 1: Invitation -->
-<section id="page1" class="page active">
-  <div class="card">
-    <!-- ... (rest of the code remains the same) -->
-    <div class="info-box" style="margin-top: 18px;">
-      <p>Contact: 7050047726</p>
-      <p>UPI ID: 037134036840019@axisbank</p>
-      <p>
-        दानधर्मान् राजधर्मान् मोक्षधर्मान् विभागश: ।
-        स्त्रीधर्मान् भगवद्धर्मान् समासव्यासयोगत: 🕉
-        (श्रीमद्भागवतम 1.9.27)
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- Page 2: Shlok & Mercy -->
-<section id="page2" class="page celebrate" aria-hidden="true">
-  <!-- ... (rest of the code remains the same) -->
-  <div class="info-box" style="margin-top: 18px;">
-    <p>Contact: 7050047726</p>
-    <p>UPI ID: 037134036840019@axisbank</p>
-    <p>
-      दानधर्मान् राजधर्मान् मोक्षधर्मान् विभागश: ।
-      स्त्रीधर्मान् भगवद्धर्मान् समासव्यासयोगत: 🕉
-      (श्रीमद्भागवतम 1.9.27)
-    </p>
-  </div>
-</section>
-
